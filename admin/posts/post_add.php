@@ -1,3 +1,15 @@
+<?php include('../include/connect.php');?>
+
+
+<?php
+
+	$conn = connectDB();
+	$sql = "SELECT * FROM `categories`";
+	$rslt = mysqli_query($conn, $sql);
+?>
+
+
+
 <?php include('../include/header.php');?>
 
 		<h2>
@@ -27,6 +39,22 @@
                     <label for="exampleInputImage">Image</label>
                     <input type="file" class="form-control" id="exampleInputImage"  name="image">  
                 </div>
+
+                <div class="form-group">
+                    <label for="exampleInputCategory_id">Category Id</label>
+                    <select class="form-control" name="category_id">
+                    	
+                    	<option>Select Category</option>
+                    	<?php while ($row = mysqli_fetch_assoc($rslt)){ ?>
+                    		<option value="<?php echo $row['Id']?>">
+                    			<?php echo $row['title']?></option>
+
+                    	<?php }?>
+
+                    </select>
+                    
+                </div>
+
 
                 <div class="form-group">
                     <label for="exampleInputDate">Date</label>

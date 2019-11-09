@@ -12,6 +12,13 @@
 
 <?php include('../include/header.php');?>
 
+<?php
+        if(isset($_SESSION['suc'])){?>
+        <div class="container alert alert-success" role="alert">
+                Success!! Data is successfully Deleted... 
+        </div>
+<?php } ?>
+
 		<h2>
 			<a class="btn btn-success" href="post_add.php">Add Post</a>
 		</h2>
@@ -27,6 +34,7 @@
 	        	<thead>
 	        		<th>ID</th>
 	        		<th>Title</th>
+	        		<th>image</th>
 	        		<th>Date</th>
 	        		<th>Action</th>
 	        	</thead>
@@ -39,9 +47,10 @@
 	        		<tr>
 	        			<td><?php echo $i;?></td>
 	        			<td><?php echo $row['Title'];?></td>
+	        			<td><img src=" ../<?php echo $row['Image'];?>" width='100'></td>
 	        			<td><?php echo $row['Date'];?></td>
 	        			<td>
-	        				<a class="btn btn-info btn-sm"
+	        				<a class="btn btn-success btn-sm"
 	                                         href="post_view.php?id=<?php echo $row['Id'];?>">view</a>
 
 
@@ -61,6 +70,9 @@
         </table>
         
         </div>
+
+        <?php //unset($_SESSION['success']); 
+        	unset($_SESSION['suc']); ?>
 
 
 <?php include('../include/footer.php');?>
